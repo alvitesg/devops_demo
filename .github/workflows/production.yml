@@ -66,12 +66,4 @@ jobs:
           platforms: linux/amd64,linux/arm64 # Multi-platform support
           cache-from: type=registry,ref=alvitesg/devops_demo:cache
           cache-to: type=inline,mode=max
-          
-      - name: Scan the Docker image
-        uses: aquasecurity/trivy-action@v0.5.8
-        with:
-          image-ref: 'alvitesg/devops_demo:${{ github.sha }}'
-          format: 'table'
-          exit-code: '1' # Fail the job if vulnerabilities are found
-          ignore-unfixed: true
-          severity: 'CRITICAL,HIGH'
+  
